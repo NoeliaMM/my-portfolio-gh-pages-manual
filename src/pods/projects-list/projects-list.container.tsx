@@ -8,7 +8,8 @@ export const ProjectsListContainer: React.FC = () => {
   // const theme = useTheme();
 
   useEffect(() => {
-    fetch(`https://api.github.com/users/defunkt/repos`)
+    const username = import.meta.env.VITE_GITHUB_USERNAME;
+    fetch(`https://api.github.com/users/${username}/repos`)
       .then(res => res.json())
       .then(data => {
         const repos: Project[] = data.map((repo: GithubRepo) => ({
